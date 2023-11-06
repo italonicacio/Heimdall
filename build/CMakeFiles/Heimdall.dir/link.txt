@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/Heimdall.dir/src/heimdall.cpp.o -o Heimdall 

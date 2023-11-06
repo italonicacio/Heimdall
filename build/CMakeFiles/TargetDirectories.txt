@@ -1,3 +1,0 @@
-/media/italonicacio/Backup/Development/Heimdall/build/CMakeFiles/Heimdall.dir
-/media/italonicacio/Backup/Development/Heimdall/build/CMakeFiles/edit_cache.dir
-/media/italonicacio/Backup/Development/Heimdall/build/CMakeFiles/rebuild_cache.dir
