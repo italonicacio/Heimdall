@@ -165,7 +165,7 @@ void ArgumentParser::ParserFlag(const std::string& argument)
     }
 }
 
-void ArgumentParser::Parser(int32_t argc, const char* argv[])
+void ArgumentParser::Parse(int32_t argc, const char* argv[])
 {
     if(argc <= 1 && argv == nullptr) return;
     

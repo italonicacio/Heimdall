@@ -21,7 +21,7 @@ add_executable(
     unit_tests
     "run-tests.cpp"
     "argument-parser-test.cpp"
-       
+    "utils-test.cpp"
 )
 
 target_link_libraries(unit_tests PUBLIC Heimdall_lib gtest)

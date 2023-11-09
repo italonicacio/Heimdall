@@ -21,9 +21,9 @@ public:
     bool GetFlag(const std::string& flag) const;
 
     template<typename T>
-    T GetOptionsAs(const std:: string& option) const { return GetOptionsAs(option, tag<T>{}); }
+    T GetOptionAs(const std::string& option) const { return GetOptionAs(option, tag<T>{}); }
 
-    const std::string& GetOptionsAs(const std::string& option, tag<std::string>) const {return GetOptionsAsString(option); }
+    const std::string& GetOptionAs(const std::string& option, tag<std::string>) const {return GetOptionsAsString(option); }
 
     float32_t GetOptionAs(const std::string& option, tag<float32_t>) const { return GetOptionAsFloat32(option); }
     float64_t GetOptionAs(const std::string& option, tag<float64_t>) const { return GetOptionAsFloat64(option); }
@@ -33,7 +33,7 @@ public:
     int64_t GetOptionAs(const std::string& option, tag<int64_t>) const { return GetOptionAsInt64(option); }
 
 
-    void Parser(int32_t argc, const char* argv[]);
+    void Parse(int32_t argc, const char* argv[]);
 
     void SetHelpMessage(const std::string& help_message);
 
