@@ -8,10 +8,27 @@ set(CMAKE_VERBOSE_MAKEFILE FALSE)
 
 
 file(GLOB SOURCES "src/*.cpp")
+list(REMOVE_ITEM SOURCES "src/main.cpp")
 
-add_executable(Heimdall ${SOURCES})
+add_library(
+    Heimdall_lib 
+    STATIC 
+        ${SOURCES}
+)
 
-target_include_directories(Heimdall PUBLIC ${CMAKE_SOURCE_DIR}/include)
+target_include_directories(Heimdall_lib PUBLIC ${CMAKE_SOURCE_DIR}/include)
+
+set_target_properties( 
+    Heimdall_lib
+    PROPERTIES
+        ENABLE_EXPORTS ON
+        POSITION_INDEPENDENT_CODE ON 
+)
 
 
-# add_subdirectory(tests)
+add_executable(Heimdall "src/main.cpp")
+
+
+target_link_libraries(Heimdall Heimdall_lib)
+
+add_subdirectory(tests)
