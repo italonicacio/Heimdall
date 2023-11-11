@@ -22,6 +22,7 @@ add_executable(
     "run-tests.cpp"
     "argument-parser-test.cpp"
     "utils-test.cpp"
+    "vec-template-test.cpp"
 )
 
 target_link_libraries(unit_tests PUBLIC Heimdall_lib gtest)
