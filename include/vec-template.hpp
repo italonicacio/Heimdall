@@ -26,7 +26,11 @@ public:
 	}
 
 	T operator*(const Vec& v) const {
-
+		T dot = 0;
+		for(std::size_t i = 0; i < N; ++i) {
+			dot += elements[i] * v.elements[i];
+		}
+		return dot;
 	}
 
 	Vec operator*(T scalar) const {

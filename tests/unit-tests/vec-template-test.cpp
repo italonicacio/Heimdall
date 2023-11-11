@@ -18,39 +18,42 @@ public:
 	std::array<float32_t, 5> arr5_3 = { 1.0f, 1.0f, 1.0f, 1.0f, 1.0f };
 	std::array<float64_t, 5> arr5_4 = { 1.0, 1.0, 1.0, 1.0, 1.0 };
 
-	Vec<int32_t, 3> ivec3_1;
-	Vec<int32_t, 3> ivec3_2;
-	Vec<int64_t, 3> ivec3_3;
-	Vec<int64_t, 3> ivec3_4;
+	Vec<int32_t, 3> i32vec3_1;
+	Vec<int32_t, 3> i32vec3_2;
 
-	Vec<float32_t, 3> fvec3_1;
-	Vec<float32_t, 3> fvec3_2;
-	Vec<float64_t, 3> fvec3_3;
-	Vec<float64_t, 3> fvec3_4;
+	Vec<int64_t, 3> i64vec1_1;
+	Vec<int64_t, 3> i64vec3_2;
 
-	Vec<int32_t, 5> ivec5_1;
-	Vec<int32_t, 5> ivec5_2;
-	Vec<int64_t, 5> ivec5_3;
-	Vec<int64_t, 5> ivec5_4;
+	Vec<float32_t, 3> f32vec3_1;
+	Vec<float32_t, 3> f32vec3_2;
 
-	Vec<float32_t, 5> fvec5_1;
-	Vec<float32_t, 5> fvec5_2;
-	Vec<float64_t, 5> fvec5_3;
-	Vec<float64_t, 5> fvec5_4;
+	Vec<float64_t, 3> f64vec3_1;
+	Vec<float64_t, 3> f64vec3_2;
+
+	Vec<int32_t, 5> i32vec5_1;
+	Vec<int32_t, 5> i32vec5_2;
+	Vec<int64_t, 5> i64vec5_1;
+	Vec<int64_t, 5> i64vec5_2;
+
+	Vec<float32_t, 5> f32vec5_1;
+	Vec<float32_t, 5> f32vec5_2;
+
+	Vec<float64_t, 5> f64vec5_1;
+	Vec<float64_t, 5> f64vec5_2;
 
 private:
 	void SetUp() override {
-		ivec3_1 = ivec3_2 = arr3_1;
-		ivec3_3 = ivec3_4 = arr3_2;
+		i32vec3_1 = i32vec3_2 = arr3_1;
+		i64vec1_1 = i64vec3_2 = arr3_2;
 
-		fvec3_1 = fvec3_2 = arr3_3;
-		fvec3_3 = fvec3_4 = arr3_4;
+		f32vec3_1 = f32vec3_2 = arr3_3;
+		f64vec3_1 = f64vec3_2 = arr3_4;
 
-		ivec5_1 = ivec5_2 = arr5_1;
-		ivec5_3 = ivec5_4 = arr5_2;
+		i32vec5_1 = i32vec5_2 = arr5_1;
+		i64vec5_1 = i64vec5_2 = arr5_2;
 
-		fvec5_1 = fvec5_2 = arr5_3;
-		fvec5_3 = fvec5_4 = arr5_4;
+		f32vec5_1 = f32vec5_2 = arr5_3;
+		f64vec5_1 = f64vec5_2 = arr5_4;
 	}
 
 	void TearDown() override {
@@ -60,8 +63,8 @@ private:
 
 
 TEST_F(VecTemplateTest, SumVectors3_int) {
-	Vec<int32_t, 3> sum1 = ivec3_1 + ivec3_2;
-	Vec<int64_t, 3> sum2 = ivec3_3 + ivec3_4;
+	Vec<int32_t, 3> sum1 = i32vec3_1 + i32vec3_2;
+	Vec<int64_t, 3> sum2 = i64vec1_1 + i64vec3_2;
 
 	for(auto e : sum1.elements) {
 		EXPECT_EQ(e, 2);
@@ -70,13 +73,12 @@ TEST_F(VecTemplateTest, SumVectors3_int) {
 	for(auto e : sum2.elements) {
 		EXPECT_EQ(e, 2);
 	}
-
 }
 
 
 TEST_F(VecTemplateTest, SumVectors3_float) {
-	Vec<float32_t, 3> sum1 = fvec3_1 + fvec3_2;
-	Vec<float64_t, 3> sum2 = fvec3_3 + fvec3_4;
+	Vec<float32_t, 3> sum1 = f32vec3_1 + f32vec3_2;
+	Vec<float64_t, 3> sum2 = f64vec3_1 + f64vec3_2;
 
 	for(auto e : sum1.elements) {
 		EXPECT_FLOAT_EQ(e, 2.0f);
@@ -85,13 +87,11 @@ TEST_F(VecTemplateTest, SumVectors3_float) {
 	for(auto e : sum2.elements) {
 		EXPECT_FLOAT_EQ(e, 2.0);
 	}
-
 }
 
 TEST_F(VecTemplateTest, SumVectors5_int) {
-	Vec<int32_t, 5> sum1 = ivec5_1 + ivec5_2;
-	Vec<int64_t, 5> sum2 = ivec5_3 + ivec5_4;
-
+	Vec<int32_t, 5> sum1 = i32vec5_1 + i32vec5_2;
+	Vec<int64_t, 5> sum2 = i64vec5_1 + i64vec5_2;
 
 	for(auto e : sum1.elements) {
 		EXPECT_EQ(e, 2);
@@ -99,8 +99,8 @@ TEST_F(VecTemplateTest, SumVectors5_int) {
 }
 
 TEST_F(VecTemplateTest, SumVectors5_float) {
-	Vec<float32_t, 5> sum1 = fvec5_1 + fvec5_2;
-	Vec<float64_t, 5> sum2 = fvec5_3 + fvec5_4;
+	Vec<float32_t, 5> sum1 = f32vec5_1 + f32vec5_2;
+	Vec<float64_t, 5> sum2 = f64vec5_1 + f64vec5_2;
 
 	for(auto e : sum1.elements) {
 		EXPECT_FLOAT_EQ(e, 2.0f);
@@ -110,4 +110,106 @@ TEST_F(VecTemplateTest, SumVectors5_float) {
 		EXPECT_FLOAT_EQ(e, 2.0);
 	}
 
+}
+
+TEST_F(VecTemplateTest, SubtractionVectors3_int) {
+	Vec<int32_t, 3> sum1 = i32vec3_1 - i32vec3_2;
+	Vec<int64_t, 3> sum2 = i64vec1_1 - i64vec3_2;
+
+	for(auto e : sum1.elements) {
+		EXPECT_EQ(e, 0);
+	}
+
+	for(auto e : sum2.elements) {
+		EXPECT_EQ(e, 0);
+	}
+
+}
+
+
+TEST_F(VecTemplateTest, SubtractionVectors3_float) {
+	Vec<float32_t, 3> sum1 = f32vec3_1 - f32vec3_2;
+	Vec<float64_t, 3> sum2 = f64vec3_1 - f64vec3_2;
+
+	for(auto e : sum1.elements) {
+		EXPECT_FLOAT_EQ(e, 0.0f);
+	}
+
+	for(auto e : sum2.elements) {
+		EXPECT_FLOAT_EQ(e, 0.0);
+	}
+
+}
+
+TEST_F(VecTemplateTest, SubtractionVectors5_int) {
+	Vec<int32_t, 5> sum1 = i32vec5_1 - i32vec5_2;
+	Vec<int64_t, 5> sum2 = i64vec5_1 - i64vec5_2;
+
+	for(auto e : sum1.elements) {
+		EXPECT_EQ(e, 0);
+	}
+
+	for(auto e : sum2.elements) {
+		EXPECT_EQ(e, 0);
+	}
+}
+
+TEST_F(VecTemplateTest, SubtractionVectors5_float) {
+	Vec<float32_t, 5> sum1 = f32vec5_1 - f32vec5_2;
+	Vec<float64_t, 5> sum2 = f64vec5_1 - f64vec5_2;
+
+	for(auto e : sum1.elements) {
+		EXPECT_FLOAT_EQ(e, 0.0f);
+	}
+
+	for(auto e : sum2.elements) {
+		EXPECT_FLOAT_EQ(e, 0.0);
+	}
+}
+
+TEST_F(VecTemplateTest, DotVectors3_int) {
+	int32_t dot1 = i32vec3_1 * i32vec3_2;
+	int64_t dot2 = i64vec1_1 * i64vec3_2;
+
+	EXPECT_EQ(dot1, 3);
+
+	EXPECT_EQ(dot2, 3);
+}
+
+TEST_F(VecTemplateTest, DotVectors3_float) {
+	float32_t dot1 = f32vec3_1 * f32vec3_2;
+	float64_t dot2 = f64vec3_1 * f64vec3_2;
+	std::array<float64_t, 3> arr = {
+		1.0, 3.0, -5.0
+	};
+
+	std::array<float64_t, 3> arr2 = {
+			4.0, -2.0, -1.0
+	};
+
+	float64_t dot3 = Vec<float64_t, 3>(arr) * Vec<float64_t, 3>(arr2);
+
+	EXPECT_FLOAT_EQ(dot1, 3.0f);
+
+	EXPECT_FLOAT_EQ(dot2, 3.0);
+
+	EXPECT_FLOAT_EQ(dot3, 3.0);
+}
+
+TEST_F(VecTemplateTest, DotVectors5_int) {
+	int32_t dot1 = i32vec5_1 * i32vec5_2;
+	int64_t dot2 = i64vec5_1 * i64vec5_2;
+
+	EXPECT_EQ(dot1, 5);
+
+	EXPECT_EQ(dot2, 5);
+}
+
+TEST_F(VecTemplateTest, DotVectors5_float) {
+	float32_t dot1 = f32vec5_1 * f32vec5_2;
+	float64_t dot2 = f64vec5_1 * f64vec5_2;
+
+	EXPECT_FLOAT_EQ(dot1, 5.0f);
+
+	EXPECT_FLOAT_EQ(dot2, 5.0);
 }
