@@ -5,3 +5,7 @@
 # Folders
 
 build
+
+# code static analyze
+
+.codechecker

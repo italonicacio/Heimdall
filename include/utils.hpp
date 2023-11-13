@@ -2,8 +2,10 @@
 
 #include <string>
 
-namespace Utils 
+
+namespace Utils
 {
-    std::string ToLower(std::string str);
-    bool HasWhiteSpaces(const std::string& str);
-} 
+	std::string ToLower(std::string str);
+	bool HasWhiteSpaces(const std::string& str);
+
+}
