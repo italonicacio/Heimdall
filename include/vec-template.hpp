@@ -125,7 +125,7 @@ public:
 		return dot;
 	}
 
-	virtual Vec Cross(Vec) {
+	inline virtual Vec Cross(const Vec& v) {
 		std::string function("Cross");
 		throw NotImplementedException(function);
 	};
@@ -157,6 +157,7 @@ public:
 	}
 
 };
+
 
 template<typename T, std::size_t N>
 inline Vec<T, N> UnitVector(const Vec<T, N>& v) {
