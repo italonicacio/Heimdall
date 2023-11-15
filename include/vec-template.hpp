@@ -158,9 +158,21 @@ public:
 
 };
 
+template <typename T, typename U, std::size_t N>
+Vec<T, N> operator*(U scalar, const Vec<T, N>& vec) {
+	return vec * scalar;
+}
 
 template<typename T, std::size_t N>
 inline Vec<T, N> UnitVector(const Vec<T, N>& v) {
 	return v / v.Length();
 }
 
+template<typename T, std::size_t N>
+inline T Dot(const Vec<T, N>& v1, const Vec<T, N>& v2) {
+	T dot = 0;
+	for(std::size_t i = 0; i < N; ++i) {
+		dot += v1.elements[i] * v2.elements[i];
+	}
+	return dot;
+}

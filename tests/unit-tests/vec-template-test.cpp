@@ -259,26 +259,31 @@ TEST_F(VecTemplateTest, DotVectors3_float) {
 TEST_F(VecTemplateTest, DotVectors5_int) {
 	int32_t dot1 = i32vec5_1.Dot(i32vec5_2);
 	int64_t dot2 = i64vec5_1.Dot(i64vec5_2);
+	int64_t dot3 = Dot(i64vec5_1, i64vec5_2);
 
 	EXPECT_EQ(dot1, 5);
-
 	EXPECT_EQ(dot2, 5);
+	EXPECT_EQ(dot3, 5);
+
 }
 
 TEST_F(VecTemplateTest, DotVectors5_float) {
 	float32_t dot1 = f32vec5_1.Dot(f32vec5_2);
 	float64_t dot2 = f64vec5_1.Dot(f64vec5_2);
+	float64_t dot3 = Dot(f64vec5_1, f64vec5_2);
+
 
 	EXPECT_FLOAT_EQ(dot1, 5.0f);
-
 	EXPECT_FLOAT_EQ(dot2, 5.0);
+	EXPECT_FLOAT_EQ(dot3, 5.0);
+
 }
 
 TEST_F(VecTemplateTest, ScalarDotVectors3_int) {
 	Vec<int32_t, 3> r1 = i32vec3_1 * 3.1;
-	Vec<int32_t, 3> r2 = i32vec3_1 * 3;
+	Vec<int32_t, 3> r2 = 3 * i32vec3_1;
 
-	Vec<int64_t, 3> r3 = i64vec3_1 * 3.1;
+	Vec<int64_t, 3> r3 = 3.1 * i64vec3_1;
 	Vec<int64_t, 3> r4 = i64vec3_1 * 3;
 	i64vec3_1 *= 3.0;
 
@@ -293,9 +298,9 @@ TEST_F(VecTemplateTest, ScalarDotVectors3_int) {
 
 TEST_F(VecTemplateTest, ScalarDotVectors3_float) {
 	Vec<float32_t, 3> r1 = f32vec3_1 * 3.1;
-	Vec<float32_t, 3> r2 = f32vec3_1 * 3;
+	Vec<float32_t, 3> r2 = 3 * f32vec3_1;
 
-	Vec<float64_t, 3> r3 = f64vec3_1 * 3.1;
+	Vec<float64_t, 3> r3 = 3.1 * f64vec3_1;
 	Vec<float64_t, 3> r4 = f64vec3_1 * 3;
 
 	f64vec3_1 *= 3.0;
@@ -312,10 +317,10 @@ TEST_F(VecTemplateTest, ScalarDotVectors3_float) {
 
 TEST_F(VecTemplateTest, ScalarDotVectors5_int) {
 	Vec<int32_t, 5> r1 = i32vec5_1 * 3.1;
-	Vec<int32_t, 5> r2 = i32vec5_1 * 3;
+	Vec<int32_t, 5> r2 = 3 * i32vec5_1;
 
 	Vec<int64_t, 5> r3 = i64vec5_1 * 3.1;
-	Vec<int64_t, 5> r4 = i64vec5_1 * 3;
+	Vec<int64_t, 5> r4 = 3 * i64vec5_1;
 
 	for(int i = 0; i < 5; ++i) {
 		EXPECT_EQ(r1.elements[i], 3);
@@ -328,10 +333,10 @@ TEST_F(VecTemplateTest, ScalarDotVectors5_int) {
 
 TEST_F(VecTemplateTest, ScalarDotVectors5_float) {
 	Vec<float32_t, 5> r1 = f32vec5_1 * 3.1;
-	Vec<float32_t, 5> r2 = f32vec5_1 * 3;
+	Vec<float32_t, 5> r2 = 3 * f32vec5_1;
 
 	Vec<float64_t, 5> r3 = f64vec5_1 * 3.1;
-	Vec<float64_t, 5> r4 = f64vec5_1 * 3;
+	Vec<float64_t, 5> r4 = 3 * f64vec5_1;
 
 	for(int i = 0; i < 5; ++i) {
 		EXPECT_FLOAT_EQ(r1.elements[i], 3.1f);

@@ -24,6 +24,7 @@ add_executable(
     "utils-test.cpp"
     "vec-template-test.cpp"
 	"vec3-test.cpp"
+	"ray-test.cpp"
 )
 
 target_link_libraries(unit_tests PUBLIC Heimdall_lib gtest)
