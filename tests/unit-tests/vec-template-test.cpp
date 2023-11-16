@@ -406,3 +406,31 @@ TEST_F(VecTemplateTest, MakeUnitVectors_function) {
 	}
 }
 
+TEST_F(VecTemplateTest, StringStreamInput) {
+	std::stringstream ss;
+	ss << "1 2 3 4 5";
+
+	Vec<float32_t, 5> v;
+
+	ss >> v;
+
+	EXPECT_EQ(v.elements[0], 1.0);
+	EXPECT_EQ(v.elements[1], 2.0);
+	EXPECT_EQ(v.elements[2], 3.0);
+	EXPECT_EQ(v.elements[3], 4.0);
+	EXPECT_EQ(v.elements[4], 5.0);
+
+}
+
+TEST_F(VecTemplateTest, StringStreamOutput) {
+	std::stringstream ss;
+
+	ss << i64vec3_1;
+
+	EXPECT_STREQ(ss.str().c_str(), "1 1 1 ");
+	ss.str(std::string());
+
+	ss << f64vec3_1;
+
+	EXPECT_STREQ(ss.str().c_str(), "1.00000 1.00000 1.00000 ");
+}

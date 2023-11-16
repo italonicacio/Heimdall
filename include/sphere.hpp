@@ -15,7 +15,7 @@ public:
 template<typename T>
 bool Sphere<T>::Hit(const Ray<T>& r, T t_min, T t_max, HitRecord<T>& record) const {
 	Vec3 oc = r.Origin() - this->center;
-	T a = r.Direction().Dot(r.Direction);
+	T a = r.Direction().Dot(r.Direction());
 	T b = oc.Dot(r.Direction());
 	T c = oc.Dot(oc) - this->radius * this->radius;
 	T discrimant = b * b - a * c;

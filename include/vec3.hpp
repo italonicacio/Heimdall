@@ -7,6 +7,7 @@ class Vec3 : public Vec<T, 3> {
 	static_assert(std::is_same<T, float32_t>::value || std::is_same<T, float64_t>::value,
 		"Template argument must be float32_t or float64_t");
 public:
+	Vec3() {}
 	Vec3(std::array<T, 3> arr) : Vec<T, 3>{ arr } {}
 	Vec3(const Vec<T, 3>& v) : Vec<T, 3>{ v } {}
 

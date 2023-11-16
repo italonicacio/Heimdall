@@ -3,6 +3,7 @@
 #include <array>
 #include <algorithm>
 #include <cmath>
+#include <iostream>
 
 #include "exception/not-implemented-exception.hpp"
 
@@ -175,4 +176,23 @@ inline T Dot(const Vec<T, N>& v1, const Vec<T, N>& v2) {
 		dot += v1.elements[i] * v2.elements[i];
 	}
 	return dot;
+}
+
+template<typename T, std::size_t N>
+inline std::istream& operator>>(std::istream& is, Vec<T, N>& t) {
+	// for(auto& e : t.elements) {
+	// 	is >> e;
+	// }
+	std::copy(std::istream_iterator<T>(is), std::istream_iterator<T>(), t.elements.begin());
+	return is;
+}
+
+template<typename T, std::size_t N>
+inline std::ostream& operator<<(std::ostream& os, const Vec<T, N>& t) {
+	constexpr int32_t precision = 5;
+	for(auto& e : t.elements) {
+		os << std::fixed << std::setprecision(precision) << e << ' ';
+	}
+
+	return os;
 }

@@ -12,5 +12,5 @@ struct HitRecord {
 template<typename T>
 class Hitable {
 public:
-	virtual bool Hit(const Ray& r, T t_min, T t_max, HitRecord& record) const = 0;
+	virtual bool Hit(const Ray<T>& r, T t_min, T t_max, HitRecord<T>& record) const = 0;
 };
