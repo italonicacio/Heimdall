@@ -4,6 +4,8 @@
 
 template<typename T>
 class Sphere : public Hitable<T> {
+	static_assert(std::is_same<T, float32_t>::value || std::is_same<T, float64_t>::value,
+		"Template argument must be float32_t or float64_t");
 public:
 	Sphere() {}
 	Sphere(Vec3<T> center, T radius) : center{ center }, radius{ radius } {}

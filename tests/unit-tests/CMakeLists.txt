@@ -26,6 +26,7 @@ add_executable(
 	"vec3-test.cpp"
 	"ray-test.cpp"
 	"sphere-test.cpp"
+	"hitable-list-test.cpp"
 )
 
 target_link_libraries(unit_tests PUBLIC Heimdall_lib gtest)

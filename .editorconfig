@@ -16,3 +16,5 @@ cpp_space_pointer_reference_alignment =  left
 cpp_space_after_keywords_in_control_flow_statements = true
 cpp_space_after_comma = true
 cpp_space_after_keywords_in_control_flow_statements = false
+
+cpp_space_around_binary_operator = ignore

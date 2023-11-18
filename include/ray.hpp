@@ -4,6 +4,8 @@
 
 template<typename T>
 class Ray {
+	static_assert(std::is_same<T, float32_t>::value || std::is_same<T, float64_t>::value,
+		"Template argument must be float32_t or float64_t");
 public:
 	Ray() {}
 	Ray(const Vec3<T>& a, const Vec3<T>& b) : A{ a }, B{ b } {}
