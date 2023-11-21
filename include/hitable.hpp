@@ -2,15 +2,15 @@
 
 #include "ray.hpp"
 
-template<typename T>
+
 struct HitRecord {
-	T t;
-	Vec3<T> p;
-	Vec3<T> normal;
+	Scalar t;
+	Vec3 p;
+	Vec3 normal;
 };
 
-template<typename T>
+
 class Hitable {
 public:
-	virtual bool Hit(const Ray<T>& r, T t_min, T t_max, HitRecord<T>& record) const = 0;
+	virtual bool Hit(const Ray& r, Scalar t_min, Scalar t_max, HitRecord& record) const = 0;
 };

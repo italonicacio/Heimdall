@@ -4,26 +4,26 @@
 #include "hitable-list.hpp"
 
 TEST(HitableListTest, Constructor) {
-	HitableListType<float32_t> list;
-	list.push_back(std::make_shared<Sphere<float32_t>>(Vec3<float32_t>({ 3.0f, 0.0f, 0.0f }), 5.0f));
-	EXPECT_NO_THROW(HitableList<float32_t>(list));
+	HitableListType list;
+	list.push_back(std::make_shared<Sphere>(Vec3({ 3.0, 0.0, 0.0 }), 5.0));
+	EXPECT_NO_THROW(HitableList(list));
 }
 
 TEST(HitableListTest, HitTheSphere) {
-	HitableListType<float32_t> list;
-	list.push_back(std::make_shared<Sphere<float32_t>>(Vec3<float32_t>({ 10.0f, 0.0f, 0.0f }), 5.0f));
+	HitableListType list;
+	list.push_back(std::make_shared<Sphere>(Vec3({ 10.0, 0.0, 0.0 }), 5.0));
 
-	Ray<float32_t> r(
-		Vec3<float32_t>({ 0.0f, 0.0f, 0.0f }),
-		Vec3<float32_t>({ 1.0f, 0.0f, 0.0f })
+	Ray r(
+		Vec3({ 0.0f, 0.0f, 0.0f }),
+		Vec3({ 1.0f, 0.0f, 0.0f })
 	);
 
-	Vec3<float32_t> norm({ -1.0f, 0.0f, 0.0f });
-	Vec3<float32_t> hit_point({ 5.0f, 0.0f, 0.0f });
+	Vec3 norm({ -1.0f, 0.0f, 0.0f });
+	Vec3 hit_point({ 5.0f, 0.0f, 0.0f });
 
-	HitRecord<float32_t> record;
+	HitRecord record;
 
-	HitableList<float32_t> SUT(list);
+	HitableList SUT(list);
 	bool hit_anything = SUT.Hit(r, 0.0, MAXFLOAT, record);
 
 	EXPECT_TRUE(hit_anything);
@@ -36,18 +36,18 @@ TEST(HitableListTest, HitTheSphere) {
 
 
 TEST(HitableListTest, HitNothing) {
-	HitableListType<float32_t> list;
-	list.push_back(std::make_shared<Sphere<float32_t>>(Vec3<float32_t>({ 10.0f, 0.0f, 0.0f }), 5.0f));
+	HitableListType list;
+	list.push_back(std::make_shared<Sphere>(Vec3({ 10.0f, 0.0f, 0.0f }), 5.0f));
 
-	Ray<float32_t> r(
-		Vec3<float32_t>({ 0.0f, 0.0f, 0.0f }),
-		Vec3<float32_t>({ -1.0f, 0.0f, 0.0f })
+	Ray r(
+		Vec3({ 0.0f, 0.0f, 0.0f }),
+		Vec3({ -1.0f, 0.0f, 0.0f })
 	);
 
 
-	HitRecord<float32_t> record;
+	HitRecord record;
 
-	HitableList<float32_t> SUT(list);
+	HitableList SUT(list);
 	bool hit_anything = SUT.Hit(r, 0.0, MAXFLOAT, record);
 
 	EXPECT_FALSE(hit_anything);

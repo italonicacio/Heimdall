@@ -6,7 +6,6 @@ set(CMAKE_CXX_STANDARD 20)
 
 set(CMAKE_VERBOSE_MAKEFILE FALSE)
 
-
 file(GLOB SOURCES "src/*.cpp")
 list(REMOVE_ITEM SOURCES "src/main.cpp")
 

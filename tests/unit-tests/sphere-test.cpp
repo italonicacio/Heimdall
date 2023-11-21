@@ -3,44 +3,44 @@
 #include "sphere.hpp"
 
 TEST(SphereTest, Constructor) {
-	EXPECT_NO_THROW(Sphere<float32_t>(
-		Vec3<float32_t>({ 3.0f, 0.0f, 0.0f }), 5.0f
+	EXPECT_NO_THROW(Sphere(
+		Vec3({ 3.0, 0.0, 0.0 }), 5.0
 	));
 }
 
 TEST(SphereTest, IsItPossibleToHitTheSphere) {
-	Ray<float32_t> r(
-		Vec3<float32_t>({ 0.0f, 0.0f, 0.0f }),
-		Vec3<float32_t>({ 1.0f, 0.0f, 0.0f })
+	Ray r(
+		Vec3({ 0.0, 0.0, 0.0 }),
+		Vec3({ 1.0, 0.0, 0.0 })
 	);
 
-	Sphere<float32_t> s(
-		Vec3<float32_t>({ 10.0f, 0.0f, 0.0f }), 5.0f
+	Sphere s(
+		Vec3({ 10.0, 0.0, 0.0 }), 5.0
 	);
 
-	HitRecord<float32_t> record;
+	HitRecord record;
 
-	bool res = s.Hit(r, 4.9f, 15.0f, record);
+	bool res = s.Hit(r, 4.9, 15.0, record);
 
 	EXPECT_TRUE(res);
 }
 
 TEST(SphereTest, CheckCorrectValuesAfterHitTheSphere) {
-	Ray<float32_t> r(
-		Vec3<float32_t>({ 0.0f, 0.0f, 0.0f }),
-		Vec3<float32_t>({ 1.0f, 0.0f, 0.0f })
+	Ray r(
+		Vec3({ 0.0, 0.0, 0.0 }),
+		Vec3({ 1.0, 0.0, 0.0 })
 	);
 
-	Sphere<float32_t> s(
-		Vec3<float32_t>({ 10.0f, 0.0f, 0.0f }), 5.0f
+	Sphere s(
+		Vec3({ 10.0, 0.0, 0.0 }), 5.0
 	);
 
-	Vec3<float32_t> norm({ -1.0f, 0.0f, 0.0f });
-	Vec3<float32_t> hit_point({ 5.0f, 0.0f, 0.0f });
+	Vec3 norm({ -1.0, 0.0, 0.0 });
+	Vec3 hit_point({ 5.0, 0.0, 0.0 });
 
-	HitRecord<float32_t> record;
+	HitRecord record;
 
-	bool res = s.Hit(r, 4.9f, 15.0f, record);
+	bool res = s.Hit(r, 4.9, 15.0, record);
 
 	EXPECT_TRUE(res);
 
@@ -48,5 +48,5 @@ TEST(SphereTest, CheckCorrectValuesAfterHitTheSphere) {
 		EXPECT_FLOAT_EQ(record.normal[i], norm[i]);
 		EXPECT_FLOAT_EQ(record.p[i], hit_point[i]);
 	}
-	EXPECT_FLOAT_EQ(record.t, 5.0f);
+	EXPECT_FLOAT_EQ(record.t, 5.0);
 }

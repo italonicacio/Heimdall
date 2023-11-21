@@ -5,26 +5,22 @@
 
 #include "hitable.hpp"
 
-template<typename T>
-using HitableListType = std::vector<std::shared_ptr<Hitable<T>>>;
+
+using HitableListType = std::vector<std::shared_ptr<Hitable>>;
 
 
-template<typename T>
-class HitableList : public Hitable<T> {
-	static_assert(std::is_same<T, float32_t>::value || std::is_same<T, float64_t>::value,
-		"Template argument must be float32_t or float64_t");
+class HitableList : public Hitable {
 public:
 
 	HitableList() {}
-	HitableList(HitableListType<T>& list) : list{ list } {}
-	virtual bool Hit(const Ray<T>& r, T t_min, T t_max, HitRecord<T>& record) const override;
+	HitableList(HitableListType& list) : list{ list } {}
+	virtual bool Hit(const Ray& r, Scalar t_min, Scalar t_max, HitRecord& record) const override;
 
-	HitableListType<T> list;
+	HitableListType list;
 };
 
-template<typename T>
-bool HitableList<T>::Hit(const Ray<T>& r, T t_min, T t_max, HitRecord<T>& record) const {
-	HitRecord<T> temp_record;
+bool HitableList::Hit(const Ray& r, Scalar t_min, Scalar t_max, HitRecord& record) const {
+	HitRecord temp_record;
 	bool hit_anything = false;
 	float64_t closest_so_far = t_max;
 	for(std::size_t i = 0; i < this->list.size(); ++i) {
