@@ -1,7 +1,8 @@
 #include <gtest/gtest.h>
 
-#include "sphere.hpp"
 #include "hitable-list.hpp"
+#include "sphere.hpp"
+
 
 TEST(HitableListTest, Constructor) {
 	HitableListType list;

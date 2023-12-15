@@ -12,6 +12,15 @@ public:
 	Vec3(std::array<Scalar, 3> arr) : Vec<Scalar, 3>{ arr } {}
 	Vec3(const Vec<Scalar, 3>& v) : Vec<Scalar, 3>{ v } {}
 
+	Vec3(std::initializer_list<Scalar> il) {
+		if(il.size() != 3) {
+			throw std::invalid_argument("Vec3 requires exactly 3 values");
+		}
+
+		std::copy(il.begin(), il.end(), this->elements.begin());
+	}
+
+
 	inline Scalar x() const { return this->elements[0]; }
 	inline Scalar y() const { return this->elements[1]; }
 	inline Scalar z() const { return this->elements[2]; }

@@ -1,10 +1,15 @@
 #include "gtest/gtest.h"
 #include "vec3.hpp"
 
+
+TEST(Vec3Test, ConstructorErrorWhenPassingMoreThan3Values) {
+	EXPECT_ANY_THROW(Vec3({ 3.0, 0.0, 0.0, 0.0 }));
+}
+
 TEST(Vec3Test, CrossProduct) {
 	// Arrange
-	Vec3 v1({ 1.0f, 0.0f, 0.0f });
-	Vec3 v2({ 0.0f, 1.0f, 0.0f });
+	Vec3 v1({ 1.0, 0.0, 0.0 });
+	Vec3 v2({ 0.0, 1.0, 0.0 });
 
 	// Act
 	Vec3 crossProduct = v1.Cross(v2);

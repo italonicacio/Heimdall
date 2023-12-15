@@ -21,3 +21,31 @@ TEST(UtilsTest, HasWhiteSpaces) {
 	EXPECT_FALSE(Utils::HasWhiteSpaces(HasNoWhiteSpaces));
 
 }
+
+TEST(UtilsMathTest, RandomInUnitSphere) {
+	Vec3 v = Utils::Math::RandomInUnitSphere();
+
+	EXPECT_LE(v.SquaredLength(), 1.0);
+}
+
+TEST(UtilsMathTest, Rand64) {
+	float64_t v1 = Utils::Math::Rand64();
+	float64_t v2 = Utils::Math::Rand64();
+
+	EXPECT_NE(v1, v2);
+}
+
+TEST(UtilsMathTest, Rand32) {
+	float32_t v1 = Utils::Math::Rand32();
+	float32_t v2 = Utils::Math::Rand32();
+
+	EXPECT_NE(v1, v2);
+}
+
+TEST(UtilsMathTest, AutoRand) {
+	Scalar v1 = Utils::Math::AutoRand();
+	Scalar v2 = Utils::Math::AutoRand();
+
+	EXPECT_NE(v1, v2);
+}
+

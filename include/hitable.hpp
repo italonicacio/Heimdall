@@ -1,14 +1,7 @@
 #pragma once
 
 #include "ray.hpp"
-
-
-struct HitRecord {
-	Scalar t;
-	Vec3 p;
-	Vec3 normal;
-};
-
+#include "hit-record.hpp"
 
 class Hitable {
 public:
