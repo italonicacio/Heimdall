@@ -20,6 +20,6 @@ namespace Utils
 		Vec3 Reflect(const Vec3& v, const Vec3& n);
 		bool Refract(const Vec3& v, const Vec3& n, Scalar ni_over_nt, Vec3& refracted);
 		// Switch the ni_over_nt name for other name with more context
-
+		Scalar Schlick(Scalar cosine, Scalar ref_idx);
 	}
 }
