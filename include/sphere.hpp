@@ -2,7 +2,6 @@
 
 #include "hitable.hpp"
 
-
 class Sphere : public Hitable {
 public:
 	Sphere() {}
@@ -14,7 +13,7 @@ public:
 		Scalar b = oc.Dot(r.Direction());
 		Scalar c = oc.Dot(oc) - this->radius * this->radius;
 		Scalar discrimant = b * b - a * c;
-		if(discrimant <= 0) {
+		if(discrimant <= 0.0) {
 			return false;
 		}
 
