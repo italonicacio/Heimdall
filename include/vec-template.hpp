@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <cmath>
 #include <iostream>
+#include <iterator>
 
 #include "exception/not-implemented-exception.hpp"
 
@@ -12,7 +13,7 @@ template<typename T, std::size_t N>
 class Vec {
 public:
 	std::array<T, N> elements;
-	
+
 	Vec() :elements{} {}
 	Vec(const std::array<T, N>& elements) : elements(elements) {};
 
